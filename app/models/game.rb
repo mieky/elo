@@ -21,7 +21,7 @@ class Game < ActiveRecord::Base
   def self.doubles
     where(:participant_count => 4)
   end
-  
+
   def plain_display
     "#{winner_names} beat #{loser_names} by #{margin} on #{created_at}"
   end
@@ -37,11 +37,11 @@ class Game < ActiveRecord::Base
   def margin
     10 - loser_score
   end
-  
+
   def is_singles_game?
     participant_count == 2
   end
-  
+
   def update_ranks
     rank = (participant_count == 2) ? :rank : :doubles_rank
     winners_rank = winners.map { |w| w.send(rank) }.sum.to_f / winners.count

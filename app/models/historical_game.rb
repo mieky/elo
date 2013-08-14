@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class HistoricalGame
   include ActiveModel::Serialization
-  
+
   def initialize(player, audit)
     self.player = player
     self.audit = audit
@@ -24,7 +24,7 @@ class HistoricalGame
   def description
     "#{winner_names} beat #{loser_names} by #{margin}/#{last_expected_margin} (Δ#{change}) on #{date.to_formatted_s('%d-%m')}"
   end
-  
+
   def date
     return game.created_at if game
     audit.created_at
@@ -51,13 +51,13 @@ class HistoricalGame
     return if game and game.is_singles_game?
     new_value("doubles_rank") || player.doubles_rank
   end
-  
+
   def change
     attr = rank ? "rank" : "doubles_rank"
     return 0 unless new_value(attr)
     new_value(attr) - old_value(attr)
   end
-  
+
   private
 
   def new_value(attr)
@@ -72,8 +72,8 @@ class HistoricalGame
     return @game if @game
     return unless game_id = new_value("last_game_id")
     Rails.logger.debug("loading game #{game_id}")
-    @game = Game.find_by_id(game_id) 
+    @game = Game.find_by_id(game_id)
   end
-    
+
   attr_accessor :player, :audit, :changes
 end

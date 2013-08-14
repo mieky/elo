@@ -7,7 +7,7 @@ class GamesController < InheritedResources::Base
 
   def new
     @game = Game.new
-    params[:participant_pairs].to_i.times { @game.participants.build } 
+    params[:participant_pairs].to_i.times { @game.participants.build }
   end
 
   def create
@@ -21,5 +21,5 @@ class GamesController < InheritedResources::Base
     super do |format|
       format.html { redirect_to players_path }
     end
-  end    
+  end
 end

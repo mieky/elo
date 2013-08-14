@@ -2,16 +2,16 @@ class Player < ActiveRecord::Base
 
   has_many :participations, :class_name => "Participant", :inverse_of => :player
   has_and_belongs_to_many :leagues
-  
+
   has_many :games, :through => :participations, :order => "created_at DESC"
   belongs_to :last_game, :class_name => "Game"
-  
+
   acts_as_audited :except => [:email, :name]
   has_associated_audits
-  
+
   validates_uniqueness_of :email
   validates_presence_of :email, :rank, :doubles_rank
-  
+
   before_validation :set_doubles_rank
 
   [:singles, :doubles].each do |count|
@@ -28,7 +28,7 @@ class Player < ActiveRecord::Base
       end
     end
   end
-  
+
   def display_name
     name.blank? ? email : name.gsub(/ (.*)$/) { " " + $&.split(//)[1] + "." }
   end
@@ -44,14 +44,14 @@ class Player < ActiveRecord::Base
   def avg_games_per_day
     (p.games.count / (p.games.first.created_at - p.games.last.created_at) / 3600 / 24).round
   end
-  
+
   def update_rank!(params = {})
     rank = params[:attr] || :rank
     self.last_game_id = params[:game].id if params[:game]
     self.last_expected_margin = margin(params[:opponent_rank]) if params[:game] && params[:game].is_singles_game?
     update_attributes(rank => new_rank(params))
   end
-  
+
   def new_rank(params = {});
     params[:attr] ||= :rank
     params[:my_rank] ||= rank
@@ -81,7 +81,7 @@ class Player < ActiveRecord::Base
       ((10.0*we)/(1.0 - we)).round - 10
     end
   end
-  
+
   private
 
   def set_doubles_rank

@@ -1,6 +1,6 @@
 class ScoreHistory
   attr_accessor :player, :game
-  
+
   def initialize(player)
     self.player = player
   end
