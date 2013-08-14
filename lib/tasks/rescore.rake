@@ -9,5 +9,5 @@ task :rescore, [:initial_score] => :environment do |t, args|
   end
 
   Game.order("created_at ASC, id ASC").each { |g| g.update_ranks }
-  
+
 end

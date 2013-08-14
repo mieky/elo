@@ -30,5 +30,5 @@ describe HistoricalGame do
     When { game.destroy }
     Then { historical_game.change.should == 0 }
   end
-  
+
 end
