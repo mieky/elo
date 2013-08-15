@@ -76,6 +76,8 @@ class Game < ActiveRecord::Base
     # There's no direct tie between a player's audits and this game except through "last_game_id"
     # So we have to purge all the audits related to this game so that the graphs can be drawn
     audits = Audit.find_by_sql("select * from audits where audited_changes like '%#{id}%'")
-    audits.select { |a| a.audited_changes["last_game_id"].include?(id) }.map(&:delete)
+    audits.select { |a|
+      a.audited_changes["last_game_id"].try(:include?, id)
+    }.map(&:delete)
   end
 end
