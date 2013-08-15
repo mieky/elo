@@ -1,9 +1,9 @@
 class AddDefaultLeagueData < ActiveRecord::Migration
   def up
     # create the Unicorn Office league
-    # update all of the games 
+    # update all of the games
     # create join table records for each player and league
-    league = League.create(name: "Unicorn Office")
+    league = League.create(name: "Futurice Tampere")
     Game.all.each do |g|
       g.update_attributes!(league_id: league.id)
     end
