@@ -5,6 +5,7 @@ gem 'high_voltage'
 gem "acts_as_audited", "2.0.0"
 gem "rabl"
 gem 'pg'
+gem 'debugger'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
