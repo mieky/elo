@@ -15,5 +15,8 @@
 		<%= game.created_at.to_s(:long) %>
 	</abbr>
 
-	<!-- (<%= link_to "X", game_path(game), :method => :delete %>) -->
+	<div class="delete-link is-hidden">
+		(<%= link_to "delete", game_path(game), :method => :delete, :confirm => "Ookkonää varma ja?"
+	%>)
+	</div>
 </li>

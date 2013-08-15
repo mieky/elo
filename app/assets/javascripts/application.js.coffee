@@ -6,4 +6,7 @@
 #= require highcharts
 #= require_tree .
 
-$(document).ready -> $("abbr.timeago").timeago()
+$(document).ready ->
+	$("abbr.timeago").timeago()
+	$(".game").on "dblclick", ->
+		$(this).find(".delete-link").removeClass "is-hidden"
