@@ -8,8 +8,7 @@
   <thead>
     <tr>
       <th>Player</th>
-      <th class="rank">Rank <span>(Single / Doubles)</span></th>
-      <th class="hide-on-phones">Actions</th>
+      <th class="rank">Rank</th>
     </tr>
   </thead>
   <tbody>
@@ -21,8 +20,9 @@
             <%= player.name  %>
           <% end %>
         </td>
-        <td class="rank singles"><%= number_with_delimiter(player.rank) %> / <%= number_with_delimiter(player.doubles_rank) %></td>
-        <td class="actions hide-on-phones"><%= link_to 'Delete', player_path(player), :method => :delete, :confirm => "Delete #{player.display_name}?" %></td>
+        <td class="rank">
+          <span class="rank-single" title="Double rank: <%= number_with_delimiter(player.doubles_rank) %>"><%= number_with_delimiter(player.rank) %></span>
+        </td>
       </tr>
     <% end -%>
   </tbody>
