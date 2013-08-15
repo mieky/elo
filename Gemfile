@@ -25,6 +25,7 @@ gem 'inherited_resources'
 gem 'simple_form'
 
 group :development, :test do
+  gem 'webrick', '~> 1.3.1'
   gem 'flexmock', :require => false
   gem 'rspec-rails', :require => 'rspec/rails'
   gem 'rspec-given', :require => 'rspec/given'
