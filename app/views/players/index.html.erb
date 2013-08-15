@@ -29,8 +29,10 @@
 </table>
 
 <% content_for(:sidebar) do %>
-  <h4>Recent Games (<%= Game.today.count %> today)</h4>
-  <ul>
-    <%= render recent_games %>
-  </ul>
+  <div class="recent-games">
+    <h4>Recent Games (<%= Game.today.count %> today)</h4>
+    <ul>
+      <%= render recent_games %>
+    </ul>
+  </div>
 <% end %>

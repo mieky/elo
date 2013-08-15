@@ -1,5 +1,11 @@
 @import ZURB-foundation
 
+*
+  box-sizing: border-box
+
+body
+  font-size: 15px
+
 header
   background-color: #eee
   margin-bottom: 2em
@@ -31,6 +37,9 @@ header
       float: right
       line-height: 14px
 
+h1, h2, h3, h4
+  color: #555
+
 form
   @extend .nice
   input[type=email], input[type=text], input[type=number]
@@ -60,12 +69,41 @@ table
         vertical-align: middle
         display: inline-block
 
+.recent-games
+  h4
+    border-bottom: 1px solid #ddd
+    text-align: center
+    margin-bottom: 15px
+
 .game
+  font-size: 15px
+  text-align: center
+  padding: 5px 0
   span
     font-weight: bold
   abbr
     font-weight: lighter
     border-bottom: none
+  .winner, .loser, .separator
+    float: left
+  .winner, .loser
+    width: 45%
+  .separator
+    line-height: 50px
+    width: 10%
+  .names
+    margin-bottom: 5px
+  .score
+    font-size: 28px
+    font-weight: lighter
+  .timeago
+    display: block
+    clear: both
+    font-size: 13px
+    color: #999
+  &:nth-child(even)
+    background-color: #f9f9f9
+
 .winner
   color: green
 
